@@ -1,0 +1,10 @@
+.WeatherInfo {
+  font-family: "Permanent Marker", "Raleway", sans-serif;
+  font-size: 18px;
+  /* background-image: ; */
+}
+
+.WeatherDescription {
+  padding: 40px;
+  border: 2px solid white;
+}
