@@ -3,9 +3,10 @@ import RecipeDetail from '../components/RecipeDetail';
 
 
 function RecipeDetailView(props) {
+
     return (
         <div className="RecipeDetailView">
-            <RecipeDetail recipes={props.recipes} />
+            <RecipeDetail recipeInfo={props.recipeInfo} />
         </div>
     );
 }

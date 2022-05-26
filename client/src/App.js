@@ -7,13 +7,14 @@ import HomeView from './views/HomeView';
 import GetMealView from './views/GetMealView'; //FormView
 import GridView from './views/GridView';
 import RecipeDetailView from './views/RecipeDetailView';
-// import MyFavoritesView from './views/MyFavoritesView';
+import MyFavoritesView from './views/MyFavoritesView';
 import Error404View from './views/Error404View';
 
 let BASE_URL = `https://api.spoonacular.com/recipes`;
 
 function App() {
     const [recipes, setRecipes] = useState([]);
+    const [recipeInfo, setRecipeInfo] = useState(null)
     const navigate = useNavigate();
     const [error, setError] = useState("");
 
@@ -46,13 +47,35 @@ function App() {
       navigate('/recipes');  // redirect to /recipes
     }
 
-    // function showMainRecipe(id) {
-    //   let newMainRecipe = recipes.find(r => r.id === id);
-    //   //console.log(newMainRecipe)
-    //   setMainRecipe(newMainRecipe);
+
+    async function getRecipeInfo(id) {
+      // call Spoonacular API
+      setError("");
+      setRecipeInfo(null);
+  
+      const options = {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+       }
+
+      let url = `${BASE_URL}/${id}/information?apiKey=026462ab04b24ffd93b267a6542ced49&`
       
-      //navigate('/selectedrecipe');  // redirect to /selectedrecipe
-    //};
+      try {
+        let response = await fetch(url, options);
+        if (response.ok) {
+          let data = await response.json();
+          setRecipeInfo(data);
+        } else {
+          setError(`Server error: ${response.status} ${response.statusText}`);
+        }
+      } catch (err) {
+        setError(`Network error: ${err.message}`);
+      }
+    
+    }
+
 
     return (
         <div className="App">
@@ -62,9 +85,9 @@ function App() {
             <Routes>
                 <Route path="/" element={<HomeView />} />
                 <Route path="getmeal" element={<GetMealView getRecipesCb={getRecipes}/>} />
-                <Route path="recipes" element={<GridView recipes={recipes} />} />
-                <Route path="recipes/:id"element={<RecipeDetailView recipes={recipes}/>} />
-                {/* <Route path="myfavorites" element={<MyFavoritesView />} /> */}
+                <Route path="recipes" element={<GridView recipes={recipes} getRecipeInfoCb={getRecipeInfo}/>} />
+                <Route path="recipes/:id"element={<RecipeDetailView recipeInfo={recipeInfo}/>} />
+                <Route path="myfavorites" element={<MyFavoritesView />} />
                 <Route path="*" element={<Error404View />} />
             </Routes>
 

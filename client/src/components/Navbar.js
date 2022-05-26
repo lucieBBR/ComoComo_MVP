@@ -9,7 +9,7 @@ function Navbar() {
             <ul>
                 <li><NavLink to="/">Home</NavLink></li>
                 <li><NavLink to="/getmeal">Get Meal</NavLink></li>
-                {/* <li><NavLink to="/myfavorites">My Favorites</NavLink></li> */}
+                <li><NavLink to="/myfavorites">My Favorites</NavLink></li>
             </ul>
         </nav>
     );

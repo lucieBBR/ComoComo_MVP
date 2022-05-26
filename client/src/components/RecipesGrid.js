@@ -15,6 +15,7 @@ function RecipesGrid(props) {
                             id={r.id}
                             src={r.image}
                             alt="image of the meal"
+                            onClick={(e) => props.getRecipeInfoCb(r.id)}
                       />  
                     </Link>
                     <figcaption>{r.title}</figcaption>
