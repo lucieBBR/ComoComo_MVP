@@ -5,7 +5,7 @@ import IngredientsForm from '../components/IngredientsForm';
 function GetMealView(props) {
     return (
         <div className="GetMealView">
-            <IngredientsForm getRecipesCb={props.getRecipesCb}/>
+            <IngredientsForm getRecipesCb={props.getRecipesCb} />
         </div>
     );
 }

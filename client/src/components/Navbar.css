@@ -20,3 +20,8 @@ nav a {
 nav a.active {
     background-color: #ccc;
 }
+
+li {
+    font-size: 22px;
+    text-decoration: none;
+}

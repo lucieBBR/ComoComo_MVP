@@ -1,16 +1,22 @@
-label {
-  font-weight: bold;
-  font-size: 18px;
-  padding: 20px;
+.IngredientsForm {
+  display: grid;
+  justify-content: center;
 }
 
 input {
   padding: 10px;
-  margin: 10px;
+  margin: 50px 10px 10px 10px;
+  width: 500px;
+  height: 3em;
+  font-size: 18px;
+  /* top: 50%;
+  left: 50%;
+  justify-content: center; */
 }
 
 button {
-    padding: 10px;
+    padding: 20px;
     font-weight: 700;
-    margin: 10px;
+    margin: 10px auto;
+    width: 30%;
 }

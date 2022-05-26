@@ -8,18 +8,19 @@ function RecipesGrid(props) {
       <div className="RecipesGrid">
           {
                 props.recipes.map(r => (
+                  <figure >
                     <img key={r.id}
+                    id={r.id}
                     src={r.image}
-                    alt="image with the meal"
-                    onClick={(e) => props.showSelectedRecipeCb(r.id)}
+                    alt="image of the meal"
+                    onClick={(e) => props.showMainRecipeCb(r.id)}
                     />  
-                ))
+                <figcaption>{r.title}</figcaption>
+                </figure>
+                )) 
             }     
       </div>
     );
   }
 
 export default RecipesGrid;
-
-
-{/* <p>{w.weather[0].description}</p> */}

@@ -2,33 +2,25 @@ import React, { useState } from "react";
 import "./IngredientsForm.css";
 
 
-const INIT_STATE = {
-  ingredients: ""
-};
-
 function IngredientsForm(props) {
-  const [input, setInput] = useState(INIT_STATE);
+  const [ingredients, setIngredients] = useState({
+  });
 
   function handleSubmit(event) {
     event.preventDefault();
-    props.getRecipesCb(input);
-    setInput(INIT_STATE);
+    props.getRecipesCb(ingredients);
+    setIngredients("");
   }
 
   function handleChange(event) {
-      let { name, value } = event.target
-      setInput(input => ({
-          ...input,
-          [name]: value
-      }))
+    setIngredients(event.target.value);
   }
 
   return (
-    <form onSubmit={handleSubmit} className="LocationForm">
+    <form onSubmit={handleSubmit} className="IngredientsForm">
       <input
         type="text"
-        name="ingredients"
-        value={input.ingredients}
+        value={ingredients}
         onChange={handleChange}
         placeholder="type ingredients separated by comma (e.g. tomatoes,egg)"
       />
