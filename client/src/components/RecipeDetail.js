@@ -22,6 +22,7 @@ function RecipeDetail(props) {
           <div className="RecipeInfo">
             <h3> {recipe.title} </h3>
             <a href={recipe.sourceUrl} target="_blank">See recipe details</a>
+            <button onClick={e => props.addToFavoritesCb(recipe)}>Add to Favorites</button>
           </div>
           <Link to="/recipes">Back to all recipes</Link>
         </div>

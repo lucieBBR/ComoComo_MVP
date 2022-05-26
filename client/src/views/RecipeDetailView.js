@@ -6,7 +6,7 @@ function RecipeDetailView(props) {
 
     return (
         <div className="RecipeDetailView">
-            <RecipeDetail recipeInfo={props.recipeInfo} />
+            <RecipeDetail recipeInfo={props.recipeInfo} addToFavoritesCb={props.addToFavoritesCb} />
         </div>
     );
 }

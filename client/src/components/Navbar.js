@@ -3,14 +3,16 @@ import { NavLink } from 'react-router-dom';
 import './Navbar.css';
 
 
-function Navbar() {
+function Navbar(props) {
     return (
         <nav className="Navbar">
             <ul>
                 <li><NavLink to="/">Home</NavLink></li>
                 <li><NavLink to="/getmeal">Get Meal</NavLink></li>
-                <li><NavLink to="/myfavorites">My Favorites</NavLink></li>
             </ul>
+            <NavLink to="/myfavorites">
+                <button onClick={(e) => props.getFavoritesCb()} title="show favorites" type="button">My Favorites</button>
+            </NavLink>
         </nav>
     );
 }

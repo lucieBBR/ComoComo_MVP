@@ -25,3 +25,10 @@ li {
     font-size: 22px;
     text-decoration: none;
 }
+
+button {
+    padding: 20px;
+    font-weight: 700;
+    margin: 10px auto;
+    width: 10px;
+}

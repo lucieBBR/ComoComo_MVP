@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Route, Routes, useNavigate } from 'react-router-dom';
 import './App.css';
 
@@ -14,7 +14,8 @@ let BASE_URL = `https://api.spoonacular.com/recipes`;
 
 function App() {
     const [recipes, setRecipes] = useState([]);
-    const [recipeInfo, setRecipeInfo] = useState(null)
+    const [recipeInfo, setRecipeInfo] = useState(null);
+    const [myFavorites, setFavorites] = useState(null);
     const navigate = useNavigate();
     const [error, setError] = useState("");
 
@@ -76,22 +77,78 @@ function App() {
     
     }
 
+    async function addToFavorites(recipe) { //or id?
+      let options = {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(recipe) //what to include to parameter?
+      };
+  
+      try {
+        let response = await fetch("/favorites", options); //??? which link - is /api/favorites leading to my sql table?
+        if (response.ok) {
+          let data = await response.json();
+          setFavorites(data);
+        } else {
+          console.log(`Server error: ${response.status} ${response.statusText}`);
+        }
+      } catch (err) {
+        console.log(`Network error: ${err.message}`);
+      }
+    }
+
+    useEffect(() => {
+      getFavorites();  
+  }, []);
+
+    async function getFavorites() {
+      try {
+          let response = await fetch('/favorites'); 
+          if (response.ok) {
+              let favorites = await response.json();
+              setFavorites(favorites);
+          } else {
+              console.log(`Server error: ${response.status} ${response.statusText}`);
+          }
+      } catch (err) {
+          console.log(`Server error: ${err.message}`);
+      }
+  }
+
+  async function deleteFromFavorites(id) {
+    let options = {
+        method: 'DELETE'
+    };
+
+    try {
+        let response = await fetch(`/favorites/${id}`, options);  // do DELETE
+        if (response.ok) {
+            let favorites = await response.json();
+            setFavorites(favorites);
+        } else {
+            console.log(`Server error: ${response.status} ${response.statusText}`);
+        }
+    } catch (err) {
+        console.log(`Server error: ${err.message}`);
+    }
+}
+
 
     return (
         <div className="App">
           <h1>Como Como</h1>
-            <Navbar />
+            <Navbar getFavoritesCb={getFavorites}/>
             
             <Routes>
                 <Route path="/" element={<HomeView />} />
                 <Route path="getmeal" element={<GetMealView getRecipesCb={getRecipes}/>} />
                 <Route path="recipes" element={<GridView recipes={recipes} getRecipeInfoCb={getRecipeInfo}/>} />
-                <Route path="recipes/:id"element={<RecipeDetailView recipeInfo={recipeInfo}/>} />
-                <Route path="myfavorites" element={<MyFavoritesView />} />
+                <Route path="recipes/:id"element={<RecipeDetailView recipeInfo={recipeInfo} addToFavoritesCb={addToFavorites}/>} />
+                <Route path="myfavorites" element={<MyFavoritesView myFavorites={myFavorites} deleteFromFavoritesCb={deleteFromFavorites}/>} />
                 <Route path="*" element={<Error404View />} />
             </Routes>
 
-            {error && <h2 style={{ color: "red" }}>{error}</h2>}
+            {/* {error && <h2 style={{ color: "red" }}>{error}</h2>} */}
 
         </div>
     );
