@@ -3,8 +3,7 @@ import "./IngredientsForm.css";
 
 
 function IngredientsForm(props) {
-  const [ingredients, setIngredients] = useState({
-  });
+  const [ingredients, setIngredients] = useState("");
 
   function handleSubmit(event) {
     event.preventDefault();

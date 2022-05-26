@@ -1,5 +1,6 @@
 import React from "react";
 import "./RecipesGrid.css";
+import { Link } from 'react-router-dom';
 
 function RecipesGrid(props) {
   
@@ -8,14 +9,15 @@ function RecipesGrid(props) {
       <div className="RecipesGrid">
           {
                 props.recipes.map(r => (
-                  <figure >
-                    <img key={r.id}
-                    id={r.id}
-                    src={r.image}
-                    alt="image of the meal"
-                    onClick={(e) => props.showMainRecipeCb(r.id)}
-                    />  
-                <figcaption>{r.title}</figcaption>
+                  <figure key = {r.id} >
+                    <Link to={'/recipes/'+r.id}>
+                      <img key={r.id}
+                            id={r.id}
+                            src={r.image}
+                            alt="image of the meal"
+                      />  
+                    </Link>
+                    <figcaption>{r.title}</figcaption>
                 </figure>
                 )) 
             }     

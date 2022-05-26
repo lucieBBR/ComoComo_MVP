@@ -15,7 +15,6 @@ let BASE_URL = `https://api.spoonacular.com/recipes`;
 function App() {
     const [recipes, setRecipes] = useState([]);
     const navigate = useNavigate();
-    const [mainRecipe, setMainRecipe] = useState(null);
     const [error, setError] = useState("");
 
 
@@ -47,13 +46,13 @@ function App() {
       navigate('/recipes');  // redirect to /recipes
     }
 
-    function showMainRecipe(id) {
-      let newMainRecipe = recipes.find(r => r.id === id);
-      //console.log(newMainRecipe)
-      setMainRecipe(newMainRecipe);
+    // function showMainRecipe(id) {
+    //   let newMainRecipe = recipes.find(r => r.id === id);
+    //   //console.log(newMainRecipe)
+    //   setMainRecipe(newMainRecipe);
       
-      navigate('/selectedrecipe');  // redirect to /selectedrecipe
-    };
+      //navigate('/selectedrecipe');  // redirect to /selectedrecipe
+    //};
 
     return (
         <div className="App">
@@ -63,8 +62,8 @@ function App() {
             <Routes>
                 <Route path="/" element={<HomeView />} />
                 <Route path="getmeal" element={<GetMealView getRecipesCb={getRecipes}/>} />
-                <Route path="recipes" element={<GridView recipes={recipes} showMainRecipeCb={showMainRecipe} />} />
-                <Route path="selectedrecipe" element={<RecipeDetailView mainRecipe={mainRecipe} />} />
+                <Route path="recipes" element={<GridView recipes={recipes} />} />
+                <Route path="recipes/:id"element={<RecipeDetailView recipes={recipes}/>} />
                 {/* <Route path="myfavorites" element={<MyFavoritesView />} /> */}
                 <Route path="*" element={<Error404View />} />
             </Routes>
