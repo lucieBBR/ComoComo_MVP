@@ -15,11 +15,11 @@ router.get("/", async (req, res) => {
 });
 
 router.post("/", async (req, res) => {
-    let { recipe_title, recipe_img } = req.body;
+    let { recipe_id, recipe_title, recipe_img } = req.body;
 
     let sql = `
         INSERT INTO favorites (recipe_title, recipe_img)
-        VALUES ('${recipe_title}, ${recipe_img})
+        VALUES ('${recipe_id}, ${recipe_title}, ${recipe_img})
     `;
 
     try {
@@ -50,4 +50,4 @@ router.post("/", async (req, res) => {
     }
 });
 
- 
+ module.exports = router
