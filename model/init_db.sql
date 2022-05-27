@@ -7,7 +7,7 @@ CREATE TABLE favorites (
     notes TEXT(255)
 ); 
 
-INSERT INTO favorites (recipe_id, recipe_title, recipe_img, notes )
+INSERT INTO favorites (recipe_id, recipe_title, recipe_img )
 VALUES
-    (1, 'rec one', 'rvr3vvr3v', 'f3f3f'),
-    (2, 'rec two', 'iuo3frvvr3v', 'kk883f')
+    (1, 'rec one', 'rvr3vvr3v'),
+    (2, 'rec two', 'iuo3frvvr3v')

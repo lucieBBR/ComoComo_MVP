@@ -18,9 +18,8 @@ router.post("/", async (req, res) => {
     let { recipe_id, recipe_title, recipe_img } = req.body;
 
     let sql = `
-        INSERT INTO favorites (recipe_title, recipe_img)
-        VALUES ('${recipe_id}, ${recipe_title}, ${recipe_img})
-    `;
+        INSERT INTO favorites (recipe_id, recipe_title, recipe_img)
+        VALUES (${recipe_id}, '${recipe_title}', '${recipe_img}');`;
 
     try {
         await db(sql);  // add new recipe
@@ -36,12 +35,12 @@ router.post("/", async (req, res) => {
     let recipeId = req.params.id;
 
     try {
-        let result = await db(`SELECT * FROM ducks WHERE recipe_id = ${recipeId}`);  // does recipe exist?
+        let result = await db(`SELECT * FROM favorites WHERE recipe_id = ${recipeId}`);  // does recipe exist?
         if (result.data.length === 0) {
             res.status(404).send({ error: 'Recipe not found' });
         } else {
             await db(`DELETE FROM favorites WHERE recipe_id = ${recipeId}`);  // delete recipe
-            result = await db('SELECT * FROM ducks');
+            result = await db('SELECT * FROM favorites');
             let favorites = result.data;
             res.send(favorites);  // return updated array
         } 
