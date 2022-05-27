@@ -17,11 +17,21 @@ router.get("/", async (req, res) => {
 router.post("/", async (req, res) => {
     let { recipe_id, recipe_title, recipe_img } = req.body;
 
-    let sql = `
+    // let sql = `
+    //     INSERT INTO favorites (recipe_id, recipe_title, recipe_img)
+    //     VALUES (${recipe_id}, '${recipe_title}', '${recipe_img}');`;
+
+    try {
+        let prevFav = await db(`SELECT * FROM favorites WHERE recipe_id = ${recipe_id}`); 
+        if (prevFav.data.length !== 0) {
+        res.status(404).send({ error: "Recipe is already in your favorites" });
+        return;
+        }
+
+        let sql = `
         INSERT INTO favorites (recipe_id, recipe_title, recipe_img)
         VALUES (${recipe_id}, '${recipe_title}', '${recipe_img}');`;
 
-    try {
         await db(sql);  // add new recipe
         let result = await db('SELECT * FROM favorites');
         let favorites = result.data;

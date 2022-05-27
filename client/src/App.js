@@ -19,10 +19,12 @@ function App() {
     const navigate = useNavigate();
     const [error, setError] = useState("");
 
-    async function pause(ms) {
-      return new Promise(resolve => setTimeout(resolve, ms));
-    }
+    // async function pause(ms) {
+    //   return new Promise(resolve => setTimeout(resolve, ms));
+    // }
 
+   // const sortedRecipes = myFavorites.sort((a, b) => b.date - a.date)
+    
 
     async function getRecipes(ingredients) {
       // call Spoonacular API
@@ -38,7 +40,7 @@ function App() {
 
       let url = `${BASE_URL}/findByIngredients?apiKey=026462ab04b24ffd93b267a6542ced49&ingredients=${ingredients}&number=3&ranking=2&ignorePantry=true`
   
-      await pause(1000);
+      // await pause(1000);
 
       try {
         let response = await fetch(url, options);
@@ -70,7 +72,7 @@ function App() {
 
       let url = `${BASE_URL}/${id}/information?apiKey=026462ab04b24ffd93b267a6542ced49&`
       
-      await pause(1000);
+      // await pause(1000);
 
       try {
         let response = await fetch(url, options);
@@ -100,15 +102,17 @@ function App() {
         body: JSON.stringify(myFavRecipe) //what to include to parameter?
       };
   
-      await pause(1000);
+      // await pause(1000);
       try {
         let response = await fetch("/favorites", options); //??? which link - is /api/favorites leading to my sql table?
         console.log(options)
         if (response.ok) {
           let data = await response.json();
-          console.log("I am data", data)
+          
+          //console.log("I am data", data)
           setFavorites(data);
-          console.log("My favortites", myFavorites)
+          //myFavorites.sort((a, b) => b.date - a.date)
+          //console.log("My favortites", myFavorites)
         } else {
           console.log(`Server error: ${response.status} ${response.statusText}`);
         }
@@ -165,7 +169,7 @@ function App() {
                 <Route path="getmeal" element={<GetMealView getRecipesCb={getRecipes}/>} />
                 <Route path="recipes" element={<GridView recipes={recipes} getRecipeInfoCb={getRecipeInfo}/>} />
                 <Route path="recipes/:id"element={<RecipeDetailView recipeInfo={recipeInfo} addToFavoritesCb={addToFavorites}/>} />
-                <Route path="myfavorites" element={<MyFavoritesView myFavorites={myFavorites} deleteFromFavoritesCb={deleteFromFavorites}/>} />
+                <Route path="myfavorites" element={<MyFavoritesView myFavorites={myFavorites} deleteFromFavoritesCb={deleteFromFavorites} getRecipeInfoCb={getRecipeInfo}/>} />
                 {/* <Route path="*" element={<Error404View />} /> */}
             </Routes>
 
