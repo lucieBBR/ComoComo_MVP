@@ -1,5 +1,4 @@
 import React from "react";
-import "./RecipesGrid.css";
 import { Link } from 'react-router-dom';
 
 function RecipesGrid(props) {

@@ -79,13 +79,12 @@ function App() {
 // POST method to add recipe to my sql database ("favorites" table)
     async function addToFavorites(id) { 
 
-      let dateTime = new Date().toISOString().slice(0,10)
       let myFavRecipe = {
         recipe_id: id,
         recipe_title: recipeInfo.title,
         recipe_img: recipeInfo.image,
-        posted: dateTime
       }
+      
       let options = {
         method: "POST",
         headers: { "Content-Type": "application/json" },

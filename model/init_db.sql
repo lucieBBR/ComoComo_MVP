@@ -8,7 +8,3 @@ CREATE TABLE favorites (
     posted DATETIME DEFAULT CURRENT_TIMESTAMP
 ); 
 
-INSERT INTO favorites (recipe_id, recipe_title, recipe_img )
-VALUES
-    (1, 'rec one', 'rvr3vvr3v'),
-    (2, 'rec two', 'iuo3frvvr3v')

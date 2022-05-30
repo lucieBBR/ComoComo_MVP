@@ -6,7 +6,7 @@ const db = require("../model/helper");
 // GET all favorites
 router.get("/", async (req, res) => {
   try {
-      let results = await db('SELECT * FROM favorites ORDER BY posted DESC'); // get all favorite recipes
+      let results = await db('SELECT * FROM favorites ORDER BY posted ASC'); // get all favorite recipes
       let favorites = results.data;
       res.send(favorites);
   } catch (err) {
@@ -15,7 +15,7 @@ router.get("/", async (req, res) => {
 });
 
 router.post("/", async (req, res) => {
-    let { recipe_id, recipe_title, recipe_img, posted } = req.body;
+    let { recipe_id, recipe_title, recipe_img} = req.body;
 
     try {
         let prevFav = await db(`SELECT * FROM favorites WHERE recipe_id = ${recipe_id}`); 
@@ -25,11 +25,11 @@ router.post("/", async (req, res) => {
         }
 
         let sql = `
-        INSERT INTO favorites (recipe_id, recipe_title, recipe_img, posted)
-        VALUES (${recipe_id}, '${recipe_title}', '${recipe_img}', '${posted}');`;
+        INSERT INTO favorites (recipe_id, recipe_title, recipe_img)
+        VALUES (${recipe_id}, '${recipe_title}', '${recipe_img}');`;
 
         await db(sql);  // add new recipe
-        let result = await db('SELECT * FROM favorites ORDER BY posted DESC');
+        let result = await db('SELECT * FROM favorites ORDER BY posted ASC');
         let favorites = result.data;
         res.status(201).send(favorites);  // return updated array (with 201 for "new resource created")
     } catch (err) {

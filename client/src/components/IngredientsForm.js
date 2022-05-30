@@ -16,19 +16,24 @@ function IngredientsForm(props) {
   }
 
   return (
-    <div className="col">
-      <form onSubmit={handleSubmit} className="IngredientsForm">
-        <label>WHAT'S IN MY FRIDGE?
-          <input
+  <div className="row">
+    <div className="col sm-6 text-center">
+      <form onSubmit={handleSubmit} className="form-group">
+        <label for="floatingInput">WHAT'S IN MY FRIDGE?
+          <p class="text-center mt-5 fs-6 fw-light">Type your ingredients separated by comma</p>
+          <input 
+            className="form-control d-block p-3 mt-2 mw-200"
+            id="floatingInput"
             type="text"
             value={ingredients}
             onChange={handleChange}
-            placeholder="type ingredients separated by comma (e.g. tomatoes,egg)"
+            placeholder="e.g. tomatoes,egg,cheese,..."
           />
         </label>
-        <button type="submit" className="btn btn-primary">Get Meal</button>  
+        <button type="submit" className="btn btn-primary btn-sm p-4 d-block mx-auto">Get Meal</button>  
       </form>
     </div>
+  </div>
   );
 }
 

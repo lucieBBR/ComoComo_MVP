@@ -1,39 +1,3 @@
-/* nav {
-    border: 1px solid rgb(109, 105, 105);
-}
-
-nav ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-nav li {
-    display: inline-block;
-    margin: 0 5px;
-}
-
-nav a {
-    padding: 10px;
-}
-*/
-/* 'active' class automatically added by React Router */
-/*
-nav a.active {
-    background-color: #ccc;
-}
-
-li {
-    font-size: 22px;
-    text-decoration: none;
-}
-
-button {
-    padding: 20px;
-    font-weight: 700;
-    margin: 10px auto;
-    width: 10px;
-} 
-*/
 nav {
     font-family: "Barrio", "sans-serif";
 }
@@ -57,4 +21,5 @@ nav {
 .nav-item:hover {
     font-size: 20px;
     }
+
 

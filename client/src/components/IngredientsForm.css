@@ -1,27 +1,4 @@
-.IngredientsForm {
-  display: grid;
-  justify-content: center;
-  padding: 100px;
-}
-
-.IngredientsForm input {
-  padding: 20px;
-  margin: 50px 10px 10px 10px;
-  width: 600px;
-  height: 4em;
-  font-size: 18px;
-  border: 0px;
-  border-radius: 15px;
-}
-
-.IngredientsForm button {
-    padding: 20px;
-    font-weight: 700;
-    margin: 10px auto;
-    width: 30%;
-}
-
-.IngredientsForm label {
+.form-group label {
   font-family: "Barrio", "sans-serif";
   font-size: 36px;
   padding: 50px;
