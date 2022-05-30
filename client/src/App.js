@@ -4,11 +4,11 @@ import './App.css';
 
 import Navbar from './components/Navbar';
 import HomeView from './views/HomeView';
-import GetMealView from './views/GetMealView'; //FormView
+import GetMealView from './views/GetMealView';
 import GridView from './views/GridView';
 import RecipeDetailView from './views/RecipeDetailView';
 import MyFavoritesView from './views/MyFavoritesView';
-//import Error404View from './views/Error404View';
+import Error404View from './views/Error404View';
 
 let BASE_URL = `https://api.spoonacular.com/recipes`;
 let API_KEY = `026462ab04b24ffd93b267a6542ced49`
@@ -20,7 +20,7 @@ function App() {
     const navigate = useNavigate();
     const [error, setError] = useState("");
   
-    // calling Spoonacular API to get recipes based on ingredients from input
+// calling Spoonacular API to get recipes based on ingredients from input
     async function getRecipes(ingredients) {
       setError("");
       setRecipes(null);
@@ -48,7 +48,8 @@ function App() {
       navigate('/recipes');  // redirect to /recipes
     }
 
-// calling Spoonacular API to get info about one recipe based on its id (after click)
+
+// calling Spoonacular API to get info about one recipe based on its id (after click on See detail in RecipesGrid or in MyFavoritesView)
     async function getRecipeInfo(id) {
       setError("");
       setRecipeInfo(null);
@@ -76,7 +77,8 @@ function App() {
     
     }
 
-// POST method to add recipe to my sql database ("favorites" table)
+
+// POST method to add recipe to my sql database ("favorites" sql table) after click on Add to Favorites in the RecipeDetailView
     async function addToFavorites(id) { 
 
       let myFavRecipe = {
@@ -92,7 +94,7 @@ function App() {
       };
   
       try {
-        let response = await fetch("/favorites", options);
+        let response = await fetch("/favorites", options); //post the new recipe to my favorites ("favories" sql table)
         console.log(options)
         if (response.ok) {
           let data = await response.json();
@@ -103,17 +105,17 @@ function App() {
       } catch (err) {
         console.log(`Network error: ${err.message}`);
       }
-      // navigate('/myfavorites'); 
     }
 
     useEffect(() => {
       getFavorites();  
   }, []);
 
-// GET method to show all the favorites from my "favorites" sql table
+
+// GET method to show all the favorites from my "favorites" sql table after clicking on My Favorites (MyFavoritesView)
     async function getFavorites() {
       try {
-          let response = await fetch('/favorites'); 
+          let response = await fetch('/favorites'); //get all favorites
           if (response.ok) {
               let favorites = await response.json();
               setFavorites(favorites);
@@ -125,17 +127,18 @@ function App() {
       }
   }
 
-  // DELETE method to delete recipe from "favorites" table & "MyFavoritesView"
+
+  // DELETE method to delete recipe from "favorites" table & "MyFavoritesView" after clicking on Delete in My Favorites (MyFavoritesView)
   async function deleteFromFavorites(id) {
     let options = {
         method: 'DELETE'
     };
 
     try {
-        let response = await fetch(`/favorites/${id}`, options);  // do DELETE
+        let response = await fetch(`/favorites/${id}`, options);  // delete the recipe with the given id
         if (response.ok) {
             let favorites = await response.json();
-            setFavorites(favorites);
+            setFavorites(favorites); 
         } else {
             console.log(`Server error: ${response.status} ${response.statusText}`);
         }
@@ -149,15 +152,26 @@ function App() {
             <Navbar getFavoritesCb={getFavorites}/>
 
           <div className="container-fluid">
+
+            {/* Routes to other Views of the app */}
             <Routes>
+                {/* Route to HomeView */}
                 <Route path="/" element={<HomeView />} />
+                {/* Route to GetMealView with the IngredientsForm component*/}
                 <Route path="getmeal" element={<GetMealView getRecipesCb={getRecipes}/>} />
+                {/* Route to GridView with the RecipesGrid component*/}
                 <Route path="recipes" element={<GridView recipes={recipes} getRecipeInfoCb={getRecipeInfo} />} />
+                {/* Route to RecipeDetailView with the RecipeDetail component*/}
                 <Route path="recipes/:id"element={<RecipeDetailView recipeInfo={recipeInfo} addToFavoritesCb={addToFavorites}/>} />
+                {/* Route to MyFavoritesView*/}
                 <Route path="myfavorites" element={<MyFavoritesView myFavorites={myFavorites} deleteFromFavoritesCb={deleteFromFavorites} getRecipeInfoCb={getRecipeInfo}/>} />
-                {/* <Route path="*" element={<Error404View />} /> */}
+                {/* Route to ErrorView in case the users types invalid url */}
+                <Route path="*" element={<Error404View />} />
             </Routes>
+
+            {/* Show error message in case there is a problem with the fetch  */}
             {error && <h2 style={{ color: "red" }}>{error}</h2>}
+         
           </div>
         </div>
     );

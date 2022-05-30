@@ -19,6 +19,7 @@ function Navbar(props) {
                 <li className="nav-item"><NavLink to="/" style={{ color: 'black', textDecoration: 'none'}}>Home</NavLink></li>
                 <li className="nav-item"><NavLink to="/getmeal" style={{ color: 'black', textDecoration: 'none'}}>Get Meal</NavLink></li>
             </ul>
+          {/* My Favorites button which leads the user to myfavorites page */}
             <NavLink to="/myfavorites">
                 <button className="nav-item btn btn-light .text-nowrap" onClick={(e) => props.getFavoritesCb()} title="show favorites" type="button">My Favorites 💛</button>
             </NavLink>
