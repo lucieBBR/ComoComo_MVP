@@ -1,4 +1,4 @@
-nav {
+/* nav {
     border: 1px solid rgb(109, 105, 105);
 }
 
@@ -15,8 +15,9 @@ nav li {
 nav a {
     padding: 10px;
 }
-
+*/
 /* 'active' class automatically added by React Router */
+/*
 nav a.active {
     background-color: #ccc;
 }
@@ -31,4 +32,29 @@ button {
     font-weight: 700;
     margin: 10px auto;
     width: 10px;
+} 
+*/
+nav {
+    font-family: "Barrio", "sans-serif";
 }
+
+.navbar-brand {
+    font-size: 40px;
+    margin-left: 20px;
+}
+
+#navbarNav {
+    justify-content: right;
+    
+}
+
+.navbar-nav > li{
+    padding-left:30px;
+    padding-right:30px;
+    letter-spacing: 2px;
+  }
+
+.nav-item:hover {
+    font-size: 20px;
+    }
+

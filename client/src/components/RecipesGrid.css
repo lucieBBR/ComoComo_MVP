@@ -1,4 +1,4 @@
-.RecipesGrid {
+/* .RecipesGrid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 25px;
@@ -7,14 +7,14 @@
   margin-top: 40px;
 }
 
-img {
+.RecipesGrid img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     cursor: pointer;
-    /* border: 6px double #c85a54; */
     border-radius: 5px;
     column-gap: 20px;
     border: 5px double #d3685f;
-    /* #002171;  */
-}
+} */
+
+

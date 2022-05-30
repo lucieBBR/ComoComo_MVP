@@ -6,7 +6,7 @@ import RecipesGrid from '../components/RecipesGrid';
 function GridView(props) {
     return (
         <div className="GridView">
-            <RecipesGrid recipes={props.recipes} getRecipeInfoCb={props.getRecipeInfoCb}/>
+            <RecipesGrid recipes={props.recipes} getRecipeInfoCb={props.getRecipeInfoCb} />
         </div>
     );
 }

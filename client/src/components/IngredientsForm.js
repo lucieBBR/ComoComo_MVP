@@ -16,17 +16,19 @@ function IngredientsForm(props) {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="IngredientsForm">
-      <input
-        type="text"
-        value={ingredients}
-        onChange={handleChange}
-        placeholder="type ingredients separated by comma (e.g. tomatoes,egg)"
-      />
-      
-      <button type="submit">Get Meal</button>
-     
-    </form>
+    <div className="col">
+      <form onSubmit={handleSubmit} className="IngredientsForm">
+        <label>WHAT'S IN MY FRIDGE?
+          <input
+            type="text"
+            value={ingredients}
+            onChange={handleChange}
+            placeholder="type ingredients separated by comma (e.g. tomatoes,egg)"
+          />
+        </label>
+        <button type="submit" className="btn btn-primary">Get Meal</button>  
+      </form>
+    </div>
   );
 }
 

@@ -6,7 +6,7 @@ const db = require("../model/helper");
 // GET all favorites
 router.get("/", async (req, res) => {
   try {
-      let results = await db('SELECT * FROM favorites'); // get all favorite recipes
+      let results = await db('SELECT * FROM favorites ORDER BY posted DESC'); // get all favorite recipes
       let favorites = results.data;
       res.send(favorites);
   } catch (err) {
@@ -15,11 +15,7 @@ router.get("/", async (req, res) => {
 });
 
 router.post("/", async (req, res) => {
-    let { recipe_id, recipe_title, recipe_img } = req.body;
-
-    // let sql = `
-    //     INSERT INTO favorites (recipe_id, recipe_title, recipe_img)
-    //     VALUES (${recipe_id}, '${recipe_title}', '${recipe_img}');`;
+    let { recipe_id, recipe_title, recipe_img, posted } = req.body;
 
     try {
         let prevFav = await db(`SELECT * FROM favorites WHERE recipe_id = ${recipe_id}`); 
@@ -29,16 +25,25 @@ router.post("/", async (req, res) => {
         }
 
         let sql = `
-        INSERT INTO favorites (recipe_id, recipe_title, recipe_img)
-        VALUES (${recipe_id}, '${recipe_title}', '${recipe_img}');`;
+        INSERT INTO favorites (recipe_id, recipe_title, recipe_img, posted)
+        VALUES (${recipe_id}, '${recipe_title}', '${recipe_img}', '${posted}');`;
 
         await db(sql);  // add new recipe
-        let result = await db('SELECT * FROM favorites');
+        let result = await db('SELECT * FROM favorites ORDER BY posted DESC');
         let favorites = result.data;
         res.status(201).send(favorites);  // return updated array (with 201 for "new resource created")
     } catch (err) {
         res.status(500).send({ error: err.message });
     }
+
+    // let sql_query = null;
+    // if (req.query.order){
+    //     if (req.query.order === “DESC”){
+    //       sql_query += ” ORDER BY posted DESC”;
+    //     } else {
+    //       sql_query += ” ORDER BY posted ASC”;
+    //     }
+    //   }
   });
 
   router.delete("/:id", async (req, res) => {
@@ -50,7 +55,7 @@ router.post("/", async (req, res) => {
             res.status(404).send({ error: 'Recipe not found' });
         } else {
             await db(`DELETE FROM favorites WHERE recipe_id = ${recipeId}`);  // delete recipe
-            result = await db('SELECT * FROM favorites');
+            result = await db('SELECT * FROM favorites ORDER BY posted DESC');
             let favorites = result.data;
             res.send(favorites);  // return updated array
         } 

@@ -4,7 +4,8 @@ CREATE TABLE favorites (
     recipe_id INT NOT NULL PRIMARY KEY,
     recipe_title VARCHAR(100), 
     recipe_img VARCHAR(100),
-    notes TEXT(255)
+    notes TEXT(255),
+    posted DATETIME DEFAULT CURRENT_TIMESTAMP
 ); 
 
 INSERT INTO favorites (recipe_id, recipe_title, recipe_img )

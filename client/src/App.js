@@ -11,6 +11,7 @@ import MyFavoritesView from './views/MyFavoritesView';
 //import Error404View from './views/Error404View';
 
 let BASE_URL = `https://api.spoonacular.com/recipes`;
+let API_KEY = `026462ab04b24ffd93b267a6542ced49`
 
 function App() {
     const [recipes, setRecipes] = useState([]);
@@ -18,16 +19,9 @@ function App() {
     const [myFavorites, setFavorites] = useState([]);
     const navigate = useNavigate();
     const [error, setError] = useState("");
-
-    // async function pause(ms) {
-    //   return new Promise(resolve => setTimeout(resolve, ms));
-    // }
-
-   // const sortedRecipes = myFavorites.sort((a, b) => b.date - a.date)
-    
-
+  
+    // calling Spoonacular API to get recipes based on ingredients from input
     async function getRecipes(ingredients) {
-      // call Spoonacular API
       setError("");
       setRecipes(null);
   
@@ -38,16 +32,13 @@ function App() {
         }
        }
 
-      let url = `${BASE_URL}/findByIngredients?apiKey=026462ab04b24ffd93b267a6542ced49&ingredients=${ingredients}&number=3&ranking=2&ignorePantry=true`
-  
-      // await pause(1000);
+      let url = `${BASE_URL}/findByIngredients?apiKey=${API_KEY}&ingredients=${ingredients}&number=3&ranking=1&ignorePantry=true`
 
       try {
         let response = await fetch(url, options);
         if (response.ok) {
           let data = await response.json();
           setRecipes(data);
-          console.log("recipes", recipes)
         } else {
           setError(`Server error: ${response.status} ${response.statusText}`);
         }
@@ -57,9 +48,8 @@ function App() {
       navigate('/recipes');  // redirect to /recipes
     }
 
-
+// calling Spoonacular API to get info about one recipe based on its id (after click)
     async function getRecipeInfo(id) {
-      // call Spoonacular API
       setError("");
       setRecipeInfo(null);
   
@@ -70,16 +60,13 @@ function App() {
         }
        }
 
-      let url = `${BASE_URL}/${id}/information?apiKey=026462ab04b24ffd93b267a6542ced49&`
-      
-      // await pause(1000);
+      let url = `${BASE_URL}/${id}/information?apiKey=${API_KEY}`
 
       try {
         let response = await fetch(url, options);
         if (response.ok) {
           let data = await response.json();
           setRecipeInfo(data);
-          console.log("I am chosen", recipeInfo)
         } else {
           setError(`Server error: ${response.status} ${response.statusText}`);
         }
@@ -89,43 +76,42 @@ function App() {
     
     }
 
-    async function addToFavorites(id) { //or id?
+// POST method to add recipe to my sql database ("favorites" table)
+    async function addToFavorites(id) { 
 
+      let dateTime = new Date().toISOString().slice(0,10)
       let myFavRecipe = {
         recipe_id: id,
         recipe_title: recipeInfo.title,
-        recipe_img: recipeInfo.image
+        recipe_img: recipeInfo.image,
+        posted: dateTime
       }
       let options = {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(myFavRecipe) //what to include to parameter?
+        body: JSON.stringify(myFavRecipe)
       };
   
-      // await pause(1000);
       try {
-        let response = await fetch("/favorites", options); //??? which link - is /api/favorites leading to my sql table?
+        let response = await fetch("/favorites", options);
         console.log(options)
         if (response.ok) {
           let data = await response.json();
-          
-          //console.log("I am data", data)
           setFavorites(data);
-          //myFavorites.sort((a, b) => b.date - a.date)
-          //console.log("My favortites", myFavorites)
         } else {
           console.log(`Server error: ${response.status} ${response.statusText}`);
         }
       } catch (err) {
         console.log(`Network error: ${err.message}`);
       }
-      navigate('/myfavorites'); 
+      // navigate('/myfavorites'); 
     }
 
     useEffect(() => {
       getFavorites();  
   }, []);
 
+// GET method to show all the favorites from my "favorites" sql table
     async function getFavorites() {
       try {
           let response = await fetch('/favorites'); 
@@ -140,6 +126,7 @@ function App() {
       }
   }
 
+  // DELETE method to delete recipe from "favorites" table & "MyFavoritesView"
   async function deleteFromFavorites(id) {
     let options = {
         method: 'DELETE'
@@ -158,23 +145,21 @@ function App() {
     }
 }
 
-
     return (
         <div className="App">
-          <h1>Como Como</h1>
             <Navbar getFavoritesCb={getFavorites}/>
-            
+
+          <div className="container-fluid">
             <Routes>
                 <Route path="/" element={<HomeView />} />
                 <Route path="getmeal" element={<GetMealView getRecipesCb={getRecipes}/>} />
-                <Route path="recipes" element={<GridView recipes={recipes} getRecipeInfoCb={getRecipeInfo}/>} />
+                <Route path="recipes" element={<GridView recipes={recipes} getRecipeInfoCb={getRecipeInfo} />} />
                 <Route path="recipes/:id"element={<RecipeDetailView recipeInfo={recipeInfo} addToFavoritesCb={addToFavorites}/>} />
                 <Route path="myfavorites" element={<MyFavoritesView myFavorites={myFavorites} deleteFromFavoritesCb={deleteFromFavorites} getRecipeInfoCb={getRecipeInfo}/>} />
                 {/* <Route path="*" element={<Error404View />} /> */}
             </Routes>
-
             {error && <h2 style={{ color: "red" }}>{error}</h2>}
-
+          </div>
         </div>
     );
 }

@@ -1,4 +1,4 @@
-.App {
+/* .App {
   text-align: center;
 }
 
@@ -35,4 +35,51 @@
   to {
     transform: rotate(360deg);
   }
+} */
+
+/* Override Bootstrap styling */
+
+/* h2 {
+  border-bottom: 2px solid teal;
+  margin: 2em 0 .5em;
+} 
+*/
+
+.App {
+  font-family: 'Montserrat';
+}
+.container-fluid {
+  background-color: rgb(227, 212, 216);
+  min-height: 600px;
+}
+
+p {
+  font-family: 'Montserrat';
+  font-size: 16px;
+  font-weight:400;
+  color: black;
+}
+
+input {
+  font-family: 'Montserrat';
+  font-size: 16px;
+}
+
+h1 {
+  font-family: "Barrio", "sans-serif";
+}
+
+h2 {
+  font-family: "Barrio", "sans-serif";
+  font-size: 36px;
+  padding: 50px;
+  text-align: center;
+}
+
+h3 {
+  font-family: "Barrio", "sans-serif";
+}
+
+.btn:hover {
+  border: 2px solid blue ;
 }

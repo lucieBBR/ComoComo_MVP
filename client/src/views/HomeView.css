@@ -1,0 +1,19 @@
+.HomeView {
+  margin: 0px auto;
+  width: 50%;
+  display: block;
+  justify-content: center;
+  align-content: center;
+}
+
+.HomeView img {
+  height: 550px;
+  width: 300px;
+  
+}
+
+.HomeView h1 {
+  font-size: 36px;
+  padding: 50px;
+  text-align: center;
+}
