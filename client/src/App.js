@@ -11,8 +11,7 @@ import MyFavoritesView from './views/MyFavoritesView';
 import Error404View from './views/Error404View';
 
 let BASE_URL = `https://api.spoonacular.com/recipes`;
-// let API_KEY = `ef7382616fd34387b5452aad26f6b702`;
-let API_KEY = `026462ab04b24ffd93b267a6542ced49`;
+const API_KEY = process.env.REACT_APP_MY_API_KEY;
 
 function App() {
     const [recipes, setRecipes] = useState([]);
@@ -33,7 +32,7 @@ function App() {
         }
        }
 
-      let url = `${BASE_URL}/findByIngredients?apiKey=${API_KEY}&ingredients=${ingredients}&number=5&ranking=1&ignorePantry=true`
+      let url = `${BASE_URL}/findByIngredients?apiKey=${API_KEY}&ingredients=${ingredients}&number=20&ranking=1&ignorePantry=true`
 
       try {
         let response = await fetch(url, options);

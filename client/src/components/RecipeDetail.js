@@ -40,7 +40,7 @@ function RecipeDetail(props) {
               <h6>Ingredients & Instructions:</h6> {recipe.analyzedInstructions[0].steps.map(s => {s.ingredients.map(i => i.name)})}
 
               {/* Link which redirect the user to the webpage with recipe details (external link) */}
-              <a href={recipe.sourceUrl} target="_blank">See more here</a>
+              <a href={recipe.spoonacularSourceUrl} target="_blank">See more here</a>
               
             </div>
           </div>

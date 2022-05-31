@@ -1,6 +1,6 @@
 # Full Stack "Como Como" App
 
-Como Como is a full stack app that generates recipes based on the user’s input (ingredients) by calling Spoonacular API and with the option to save recipes to Como Como database (favorites table). It is using external API (Spoonacular), React, Node/Express, MySQL, and Boostrap with CSS for styling.
+Como Como is a full stack app that generates recipes based on the user’s input (ingredients) by calling Spoonacular API and with the option to save recipes to Como Como database (favorites table). It is using external API (Spoonacular), React, Node/Express, MySQL, and Boostrap with CSS.
 
 See project description (<https://docs.google.com/document/d/1ZEqWVentlgWaSKaJFuX3xj2hFh_qfXxy4Dz4CYT-aSg/edit?usp=sharing>) for the following information:
 
@@ -24,9 +24,9 @@ See project description (<https://docs.google.com/document/d/1ZEqWVentlgWaSKaJFu
 
 - You need to create an account on [Spoonacular API page] (<https://spoonacular.com/food-api/console#Dashboard>).
 
-- In your profile on Spoonacular page you will find your API key with which you can make a limited number of requests (150 points per day). 
+- In your profile on Spoonacular page you will find your API key which you can use to make a limited number of daily requests (150 points per day).
 
-- Copy you API key and paste it as a value of the API_KEY variable in the App.js file (line 14); You will be using the API to get the recipes based on the ingredients passed in the form, and get get more information about selected recipe. 
+- Copy your API key and paste it to the .env file in your client instead of "YOUR_PASSWORD"; You will be using the API to get the recipes based on the ingredients passed in the form, and get get more information about selected recipes.
 
 - See API routes design for Como Como app here: (<https://docs.google.com/document/d/1G6hC1gqfZJneQHDp_2504lU6ZBQmRVHWgkgRhHyvrLw/edit?usp=sharing>)
 
@@ -46,7 +46,7 @@ Run `yarn migrate` in your terminal in the project folder in order to create `fa
 
 - Run `yarn start` in project directory to start the Express server on port 5000
 - `cd client` and run `yarn start` to start client server in development mode with hot reloading in port 3000.
-- Client is configured so all API calls will be proxied to port 5000 for a smoother development experience. Yay!
+- Client is configured so all API calls will be proxied to port 5000 for a smoother development experience.
 - You can test your client app in `http://localhost:3000`
 - You can test your API in `http://localhost:5000/api`
 

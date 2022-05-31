@@ -27,7 +27,7 @@ router.post("/", async (req, res) => {
 
         let sql = `
         INSERT INTO favorites (recipe_id, recipe_title, recipe_img)
-        VALUES (${recipe_id}, '${recipe_title}', '${recipe_img}');`;
+        VALUES (${recipe_id}, "${recipe_title}", "${recipe_img}");`;
 
         await db(sql);  // add new recipe
         let result = await db('SELECT * FROM favorites ORDER BY posted ASC'); //get all favorites ordered by date and time posted, ascending order
