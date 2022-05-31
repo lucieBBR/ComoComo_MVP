@@ -37,13 +37,8 @@ function RecipeDetail(props) {
                 {recipe.diets.map(d =>
                   <li key={d.name}>{d}</li>)}
               </ul>
-              {/* <h6>Ingredients: {recipe.analyzedInstructions[0].steps[0].ingredients.map(i => <p key={i.id}>{i.name}</p>)}</h6>
-              <h6>Equipment: {recipe.analyzedInstructions[0].steps[0].equipment.map(e => <p key={e.id}>{e.name}</p>)}</h6>
-              <h6>Instructions: {recipe.analyzedInstructions[0].steps[0].step}</h6> */}
               <h6>Ingredients & Instructions:</h6> {recipe.analyzedInstructions[0].steps.map(s => {s.ingredients.map(i => i.name)})}
-              {/* <h6>Equipment: {recipe.analyzedInstructions[0].steps[0].equipment.map(e => <p key={e.id}>{.name}</p>)}</h6>
-              <h6>Instructions: {recipe.analyzedInstructions[0].steps[0].step}</h6> */}
-              
+
               {/* Link which redirect the user to the webpage with recipe details (external link) */}
               <a href={recipe.sourceUrl} target="_blank">See more here</a>
               

@@ -40,7 +40,7 @@ See project description (<https://docs.google.com/document/d/1ZEqWVentlgWaSKaJFu
       DB_PASS=YOUR_PASSWORD
       ```
 
-Run `yarn migrate` in your terminal in the project folder in order to create `favorites` table in the `comocomo` database;
+Run `yarn migrate` in your terminal in the project folder in order to create `favorites` table in the `comocomo` database; Use this command whenever making changes to the database/table data;
 
 ### Run Your Development Servers
 

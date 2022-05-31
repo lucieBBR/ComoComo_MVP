@@ -7,7 +7,7 @@ function Navbar(props) {
     return (
       <nav className="navbar navbar-expand-sm navbar-light">
           {/* "Logo" */}
-          <a className="navbar-brand" href="#navbarNav">¿Cómo Como?</a>
+          <a className="navbar-brand" href="/">¿Cómo Como?</a>
           {/* Hamburger Icon */}
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
