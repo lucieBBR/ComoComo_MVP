@@ -20,6 +20,10 @@ See project description (<https://docs.google.com/document/d/1ZEqWVentlgWaSKaJFu
 
 ## Setup
 
+### Install dependencies
+
+- Run `yarn` in project directory, then, in terminal cd into client and run `yarn` in the client folder.
+
 ### For API calls
 
 - You need to create an account on [Spoonacular API page] (<https://spoonacular.com/food-api/console#Dashboard>).
