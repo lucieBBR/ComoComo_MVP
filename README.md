@@ -36,30 +36,24 @@ See project description (<https://docs.google.com/document/d/1ZEqWVentlgWaSKaJFu
 
 ### Database Prep
 
-- Access your SQL CLI by typing `mysql -u root -p`, and type `create database comocomo;` to create a database in MySQL.
+- Create a database called `comocomo` through your SQL cli.
 
-- In the `.env` file in project directory change the DB_PASS to the password to your SQL cli (if not root) - see hint:
+- Create a .env file in the project directory and add the info below; Make sure to change the DB_USER and DB_PASS to the username and password to your SQL cli :
 
       ```
+      DB_HOST=localhost 
+      DB_NAME=comocomo
+      DB_USER=USER_NAME
       DB_PASS=YOUR_PASSWORD
       ```
 
-Run `yarn migrate` in your terminal in the project folder in order to create `favorites` table in the `comocomo` database; Use this command whenever making changes to the database/table data;
+Run `yarn migrate` in your terminal in the project folder in order to create `favorites` table in the `comocomo` database; Use this command whenever making changes to the database/table data within the init_db.sql file in model folder;
 
 ### Run Your Development Servers
 
 - Run `yarn start` in project directory to start the Express server on port 5000
 - `cd client` and run `yarn start` to start client server in development mode with hot reloading in port 3000.
-- Client is configured so all API calls will be proxied to port 5000 for a smoother development experience.
-- You can test your client app in `http://localhost:3000`
-- You can test your API in `http://localhost:5000/api`
 
-## Resources
-
-- [MySQL Cheat Sheet](http://www.mysqltutorial.org/mysql-cheat-sheet.aspx)
-- [MySQL](https://dev.mysql.com/doc/refman/8.0/en/database-use.html)
-- [Fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch)
-- [React Documentation](https://reactjs.org/docs/hello-world.html)
 
 ## Notes
 
