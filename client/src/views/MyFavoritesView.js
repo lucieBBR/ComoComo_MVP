@@ -10,7 +10,7 @@ function MyFavoritesView(props) {
           {/* Grid with recipe cards */}
             {props.myFavorites.map(f => (
               <div className="col-sm-6 col-lg-3 mb-3 d-flex justify-content-evenly">
-                <div className="card ms-2">
+                <div className="card ms-2 p-3" style={{ width: '22rem' }}>
                     {/* Recipe Image */}
                       <img className="card-img-top"
                             key={f.recipe_id}

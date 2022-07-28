@@ -32,7 +32,7 @@ function App() {
         }
        }
 
-      let url = `${BASE_URL}/findByIngredients?apiKey=${API_KEY}&ingredients=${ingredients}&number=20&ranking=1&ignorePantry=true`
+      let url = `${BASE_URL}/findByIngredients?apiKey=${API_KEY}&ingredients=${ingredients}&number=10&ranking=1&ignorePantry=true`
 
       try {
         let response = await fetch(url, options);
