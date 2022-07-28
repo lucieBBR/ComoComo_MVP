@@ -30,7 +30,14 @@ See project description (<https://docs.google.com/document/d/1ZEqWVentlgWaSKaJFu
 
 - In your profile on Spoonacular page you will find your API key which you can use to make a limited number of daily requests (150 points per day).
 
-- Copy your API key and paste it to the .env file in your client instead of "YOUR_PASSWORD"; You will be using the API to get the recipes based on the ingredients passed in the form, and get get more information about selected recipes.
+- Create a .env file in client and pass there the following:
+
+      ```
+      REACT_APP_MY_API_KEY = YOUR_PASSWORD
+      ```
+- Instead of "YOUR_PASSWORD" paste in the API KEY from your Spoonacular account.
+
+- You will be using the API to get the recipes based on the ingredients passed in the form, and get get more information about selected recipes.
 
 - See API routes design for Como Como app here: (<https://docs.google.com/document/d/1G6hC1gqfZJneQHDp_2504lU6ZBQmRVHWgkgRhHyvrLw/edit?usp=sharing>)
 
@@ -53,7 +60,6 @@ Run `yarn migrate` in your terminal in the project folder in order to create `fa
 
 - Run `yarn start` in project directory to start the Express server on port 5000
 - `cd client` and run `yarn start` to start client server in development mode with hot reloading in port 3000.
-
 
 ## Notes
 
