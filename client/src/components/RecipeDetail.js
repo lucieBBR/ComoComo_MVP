@@ -22,7 +22,7 @@ function RecipeDetail(props) {
             <button type="button" className="btn btn-light" onClick={(e) => props.addToFavoritesCb(recipe.id)} title="Add to favorites">Add to Favorites💛</button>
             </Link>
             <p></p>
-            <Link to="/recipes">Go to all recipes</Link>
+            <Link to="/recipes"><button className="btn btn-primary m-2">Go to all recipes</button></Link>
           </div>
 
           {/* Recipe info */}
@@ -40,7 +40,7 @@ function RecipeDetail(props) {
               <h6>Ingredients & Instructions:</h6> {recipe.analyzedInstructions[0].steps.map(s => {s.ingredients.map(i => i.name)})}
 
               {/* Link which redirect the user to the webpage with recipe details (external link) */}
-              <a href={recipe.spoonacularSourceUrl} target="_blank">See more here</a>
+              <a href={recipe.spoonacularSourceUrl} target="_blank"><button className="btn btn-primary m-2">See more details</button></a>
               
             </div>
           </div>

@@ -7,7 +7,7 @@ function RecipesGrid(props) {
         
     <div className="RecipesGrid">
       <h2>RECIPES</h2>
-      <Link to={'/getmeal'}>Go back to search</Link>
+      <Link to={'/getmeal'}><button className="btn btn-primary m-2">Go back to search</button></Link>
       <div className="row">
       {/* Grid of recipe cards */}
         {props.recipes.map(r => (
