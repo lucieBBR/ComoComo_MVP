@@ -7,10 +7,37 @@ function HomeView() {
     return (
 
       <div className="HomeView">
+
+{/* <div className="horizontal hor1">
+<div className="scroll1">
+    <div className="text"></div>
+    <div className="text" aria-hidden="true"></div>
+    <div className="text" aria-hidden="true"></div>
+    <div className="text" aria-hidden="true"></div>
+    <div className="text" aria-hidden="true">WHAT'S IN MY FRIDGE?</div>
+    <div className="text" aria-hidden="true"></div>
+    <div className="text" aria-hidden="true"></div>
+    <div className="text" aria-hidden="true"></div>
+    <div className="text" aria-hidden="true"></div>
+    <div className="text" aria-hidden="true"></div>
+</div>
+</div>
+<div className="horizontal hor2">
+<div className="scroll2">
+    <div className="text">Don't know what to prepare?   Have any leftovers?   CLICK ON THE FRIDGE TO INSERT YOUR INGREDIENTS AND GET YOUR TODAY'S MEAL!</div>
+    <div className="text" aria-hidden="true">Don't know what to prepare?   Have any leftovers?   CLICK on the fridge to insert your ingredients and get your today's meal!</div>
+    <div className="text" aria-hidden="true">Don't know what to prepare?   Have any leftovers?   CLICK on the fridge to insert your ingredients and get your today's meal!</div>
+    <div className="text" aria-hidden="true">Don't know what to prepare?   Have any leftovers?   CLICK on the fridge to insert your ingredients and get your today's meal!</div>
+    <div className="text" aria-hidden="true">Don't know what to prepare?   Have any leftovers?   CLICK on the fridge to insert your ingredients and get your today's meal!</div>
+</div>
+</div> */}
+
         <h1>WHAT'S IN MY FRIDGE?</h1>
         <div className="Heading">
           <h4 className="text-center">Click on the fridge to insert ingredients and get your meal!</h4>
         </div>
+
+
       <div className="row text-center">
         <div className="col-offset-5">
           <Link to={'/getmeal'}>
@@ -20,6 +47,33 @@ function HomeView() {
         </div>
       </div>
     </div>  
+
+/*
+<div className="horizontal hor1">
+<div className="scroll1">
+    <div className="text">WHAT'S IN MY FRIDGE?</div>
+    <div className="text" aria-hidden="true">WHAT'S IN MY FRIDGE?</div>
+    <div className="text" aria-hidden="true">WHAT'S IN MY FRIDGE?</div>
+    <div className="text" aria-hidden="true">WHAT'S IN MY FRIDGE?</div>
+    <div className="text" aria-hidden="true">WHAT'S IN MY FRIDGE?</div>
+    <div className="text" aria-hidden="true">WHAT'S IN MY FRIDGE?</div>
+    <div className="text" aria-hidden="true">WHAT'S IN MY FRIDGE?</div>
+    <div className="text" aria-hidden="true">WHAT'S IN MY FRIDGE?</div>
+    <div className="text" aria-hidden="true">WHAT'S IN MY FRIDGE?</div>
+    <div className="text" aria-hidden="true">WHAT'S IN MY FRIDGE?</div>
+</div>
+</div>
+<div className="horizontal hor2">
+<div className="scroll2">
+    <div className="text">DON'T KNOW WHAT TO PREPARE TODAY? HAVE ANY LEFTOVERS? CLICK ON THE FRIDGE TO INSERT INGREDIENTS AND GET YOUR TODAY'S MEAL!</div>
+    <div className="text" aria-hidden="true">DON'T KNOW WHAT TO PREPARE TODAY? HAVE ANY LEFTOVERS? CLICK ON THE FRIDGE TO INSERT INGREDIENTS AND GET YOUR TODAY'S MEAL!</div>
+    <div className="text" aria-hidden="true">DON'T KNOW WHAT TO PREPARE TODAY? HAVE ANY LEFTOVERS? CLICK ON THE FRIDGE TO INSERT INGREDIENTS AND GET YOUR TODAY'S MEAL!</div>
+    <div className="text" aria-hidden="true">DON'T KNOW WHAT TO PREPARE TODAY? HAVE ANY LEFTOVERS? CLICK ON THE FRIDGE TO INSERT INGREDIENTS AND GET YOUR TODAY'S MEAL!</div>
+    <div className="text" aria-hidden="true">DON'T KNOW WHAT TO PREPARE TODAY? HAVE ANY LEFTOVERS? CLICK ON THE FRIDGE TO INSERT INGREDIENTS AND GET YOUR TODAY'S MEAL!</div>
+</div>
+</div>
+</div>
+*/
     
       // <div className="HomeView">
       //   <div className='row'>

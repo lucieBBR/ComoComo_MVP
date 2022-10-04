@@ -16,8 +16,8 @@ function IngredientsForm(props) {
   }
 
   return (
-  <div className="row">
-    <div className="col sm-6 text-center">
+   <div className="FormPage">
+    <div className="col sm-6 text-center vh-100">
       <form onSubmit={handleSubmit} className="form-group">
         <label htmlFor="floatingInput">WHAT'S IN MY FRIDGE?
           <p className="text-center mt-5 fs-6 fw-light">Type your ingredients separated by comma</p>
@@ -30,10 +30,10 @@ function IngredientsForm(props) {
             placeholder="e.g. tomatoes,egg,cheese,..."
           />
         </label>
-        <button type="submit" className="btn btn-primary btn-sm p-4 d-block mx-auto">Get Meal</button>  
+        <button type="submit" className="btn btn-primary btn-sm p-4 mb-4 d-block mx-auto">Get Meal</button>  
       </form>
     </div>
-  </div>
+   </div> 
   );
 }
 

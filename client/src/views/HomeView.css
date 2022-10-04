@@ -1,10 +1,18 @@
-/* .HomeView {
-  margin: 0px auto;
+.HomeView {
+  /* margin: 0px auto;
   width: 50%;
   display: block;
   justify-content: center;
-  align-content: center;
-} */
+  align-content: center; */
+  margin: 0px auto;
+  height: 150%;
+  background: linear-gradient(rgba(227, 212, 216, .7), rgba(227, 212, 216, .5)), url('https://images.unsplash.com/photo-1543353071-10c8ba85a904?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  
+}
 
 .Heading {
   background-color: rgba(255, 136, 38, 0.8);
@@ -12,22 +20,45 @@
   border-radius: 15px;
   width: 50%;
   padding: 0px;
-  margin: 30px auto;
+  margin: 0px auto;
 }
 
 .HomeView img {
-  height: 500px;
-  width: 300px;
-  
+  height: 450px;
+  width: 250px;
+  margin-top: 20px;
+}
+
+.HomeView img:hover {
+  /* Start the shake animation and make the animation last for 0.5 seconds */
+  animation: shake 0.5s;
+
+  /* When the animation is finished, start again */
+  animation-iteration-count: infinite;
+}
+
+@keyframes shake {
+  0% { transform: translate(1px, 1px) rotate(0deg); }
+  10% { transform: translate(-1px, -2px) rotate(-1deg); }
+  20% { transform: translate(-3px, 0px) rotate(1deg); }
+  30% { transform: translate(3px, 2px) rotate(0deg); }
+  40% { transform: translate(1px, -1px) rotate(1deg); }
+  50% { transform: translate(-1px, 2px) rotate(-1deg); }
+  60% { transform: translate(-3px, 1px) rotate(0deg); }
+  70% { transform: translate(3px, 1px) rotate(-1deg); }
+  80% { transform: translate(-1px, -1px) rotate(1deg); }
+  90% { transform: translate(1px, 2px) rotate(0deg); }
+  100% { transform: translate(1px, -2px) rotate(-1deg); }
 }
 
 .HomeView h1 {
-  font-size: 44px;
+  font-size: 50px;
   padding-top: 50px;
   text-align: center;
   color: black;
   text-shadow: 2px 2px coral;
-  /* margin-right: 15%; */
+  font-family: "Barrio", "Sans-serif";
+  margin: 0px auto;
 }
 
 .HomeView h4 {
@@ -37,3 +68,105 @@
   font-weight: 400;
   font-family: "Montserrat", "Sans-serif";
 }
+
+/* 
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-weight: bold;
+  font-style: italic;
+} */
+
+/*
+.horizontal{
+  width: 100%;
+  height: 10vw;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.hor1 {
+  height: 5vw;
+  background-color: rgba(255, 136, 38, 0.8);
+}
+
+.scroll1 .text {
+  color: white; 
+  word-spacing: 10px;
+  text-shadow: 2px 2px rgb(0, 0, 0);
+  font-family: "Barrio", "Sans-serif";
+  font-size: 2vw;
+  animation: 5s infinite linear xscroll alternate-reverse;
+  display: inline-block;
+  margin-left: 40px;
+  margin-right: 90px;
+  background: #40E0D0;
+   background: -webkit-linear-gradient(to right, #FF0080, #FF8C00, #40E0D0);
+  background: linear-gradient(to right, #FF0080, #FF8C00, #40E0D0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hor2 {
+  height: 3vw;
+  color: #ffee93;
+  background-color: rgb(63, 63, 214, 0.8);
+}
+
+.scroll2 .text {
+  font-family: "Montserrat", "Sans-serif";
+  font-size: 1vw;
+  animation: 50s infinite linear xscroll-pull;
+  display: inline-block;
+  padding-right: 5px;
+}
+
+@keyframes xscroll {
+  from { transform: translateX(0%);}
+  to { transform: translateX(-100%);}
+}
+
+@keyframes xscroll-pull {
+  0% { transform: translateX(0%);}
+  50% { transform: translateX(-90%);}
+  100% { transform: translateX(0%);}
+}
+
+@keyframes rtl-stop {
+  0% { transform: translateX(-100%);}
+  50% { transform: translateX(0%);}
+  0% { transform: translateX(-100%);}
+} 
+
+ @keyframes yscroll {
+  from { transform: translateY(0%);}
+  to { transform: translateY(-100%);}
+} 
+
+@keyframes blink-bg {
+  0%, 49% { background-color: #e9edc9;}
+  50%, 100% { background-color:#003d23}
+}
+
+@keyframes blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0;}
+}
+
+@keyframes bigger {
+  from { font-size: .1vw ;}
+  to { font-size: 6vw ;}
+} 
+
+ @keyframes shake {
+  0% { transform: translate(0%, -3%);}
+  25% { transform: translate(3%, 3%);}
+  50% { transform: translate(-3%, -3%);}
+  75% { transform: translate(3%, -3%);}
+  100% { transform: translate(-3%, 3%);}
+}  
+*/
