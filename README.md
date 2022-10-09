@@ -1,7 +1,10 @@
 # Full Stack "Como Como" App
 
 ![Home Page](./public/images/home.png)
-![Recipes Page](./public/images/recipes.png)
+![Form Page](./public/images/form.png)
+![Recipes Page](./public/images/grid.png)
+![Recipe Detail Page](./public/images/detail.png)
+![Favorites Page](./public/images/favorites.png)
 
 Como Como is a full stack app that generates recipes based on the user’s input (ingredients) by calling Spoonacular API and with the option to save recipes to Como Como database (favorites table). It is using external API (Spoonacular), React, Node/Express, MySQL, and Boostrap with CSS.
 
